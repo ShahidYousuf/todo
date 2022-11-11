@@ -19,6 +19,20 @@ namespace todo
         {
             return String.Format("{0} {1} {2}", Id, Title, Completed);
         }
+
+        public void Print()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.Write(Id);
+            Console.ResetColor();
+            Console.Write(" {0} ", Title);
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            if (Completed) Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(Completed);
+            Console.ResetColor();
+            Console.WriteLine();
+        }
+
     }
 }
 
