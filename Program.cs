@@ -10,9 +10,21 @@ class Application
         Persistence persistence = Persistence.FILE;
         Console.WriteLine("The persistence is of type {0}", persistence);
         CommandParser commandParser = new CommandParser();
-        Command command = commandParser.GetCommand();
-        Console.WriteLine("Base command is {0}", command);
+        var commandwithOptions = commandParser.CommandWithOptions();
+        
+        Console.WriteLine("Base command is {0}, Options: ", commandwithOptions.Command);
 
+        if (commandwithOptions.OptionValues.Count > 0)
+        {
+            foreach (var (key, value) in commandwithOptions.OptionValues)
+            {
+                Console.WriteLine("{0} = {1}", key, value);
+
+            }
+        } else
+        {
+            Console.WriteLine("No options");
+        }
         Todo todo = new Todo("First todo created");
         todo.Id = 10;
         todo.Print();
@@ -38,8 +50,7 @@ class Application
 
     public enum CommandOption
     {
-        COMPLETED,
-        PENDING,
+        OUTPUT,
         INDEX,
         TITLE,
     }
@@ -52,19 +63,63 @@ class Application
         }
 
         public string[] Arguments { get; set; }
-
-        private string BaseCommand()
+        public struct BaseCommandWithOptions
         {
-            if (Arguments.Length >= 2)
+           
+            public Command Command { get; set; }
+            public Dictionary<string, string> OptionValues { get; set; }
+
+        }
+        public BaseCommandWithOptions CommandWithOptions()
+        {
+            // todo list -o complted
+            // todo edit -i 5 -t "hello world"
+
+            BaseCommandWithOptions commandWithOptions = new BaseCommandWithOptions();
+            Dictionary<string, string> map = new Dictionary<string, string>();
+            map.Add("", "");
+            commandWithOptions.OptionValues = map;
+            switch (Arguments.Length)
             {
-                return Arguments[1];
+                case 1:
+                    commandWithOptions.Command = GetCommand();
+                    break;
+                case 2:
+                    commandWithOptions.Command = GetCommand();
+                    break;
+                case 3:
+                    commandWithOptions.Command = Command.HELP;
+                    map.Add("-c", Arguments[1]);
+                    commandWithOptions.OptionValues = map;
+                    break;
+                case 4:
+                    commandWithOptions.Command = GetCommand();
+                    map.Add(Arguments[2], Arguments[3]);
+                    commandWithOptions.OptionValues = map;
+                    break;
+                case 5:
+                    commandWithOptions.Command = Command.HELP;
+                    map.Add("-c", Arguments[1]);
+                    commandWithOptions.OptionValues = map;
+                    break;
+                case 6:
+                    commandWithOptions.Command = GetCommand();
+                    map.Add(Arguments[2], Arguments[3]);
+                    map.Add(Arguments[4], Arguments[5]);
+                    commandWithOptions.OptionValues = map;
+                    break;
+                default:
+                    commandWithOptions.Command = Command.HELP;
+                    break;
             }
-            return "help";
+            return commandWithOptions;
+                
         }
 
-        public Command GetCommand()
+        private Command GetCommand()
         {
-            switch (BaseCommand())
+            if (Arguments.Length <= 1) return Command.HELP;
+            switch (Arguments[1])
             {
                 case "list":
                     return Command.LIST;
