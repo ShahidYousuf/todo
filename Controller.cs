@@ -26,9 +26,17 @@ namespace todo
             }
         }
 
-        public string GetTodo(int id)
+        public void GetTodo(int id)
         {
-            return "Getting Todo with id " + id.ToString();
+            Todo? todo = store.GetTodo(id);
+            if (todo is not null)
+            {
+                todo.Print();
+            }
+            else
+            {
+                Console.WriteLine("Todo with id {0} not found", id);
+            }
         }
 
         public string CreateTodo(string? title)

@@ -29,8 +29,7 @@ namespace todo
                     if (index is not null)
                     {
                         int id = int.Parse(index);
-                        result = controller.GetTodo(id);
-                        Console.WriteLine(result);
+                        controller.GetTodo(id);
                     }
                     break;
                 case Command.CREATE:
