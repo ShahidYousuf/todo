@@ -20,8 +20,20 @@ namespace todo
 
         public override string ToString()
         {
-            string title = Title.Replace(" ", TitleSeparator);
+            string title = EncodeTitle(Title);
             return String.Format("{0} {1} {2}", Id, title, Completed);
+        }
+
+        public string EncodeTitle(string title)
+        {
+            title = title.Replace(" ", TitleSeparator);
+            return title;
+        }
+
+        public string DecodeTitle(string title)
+        {
+            title = title.Replace(TitleSeparator, " ");
+            return title;
         }
 
         public void Print()
@@ -29,7 +41,7 @@ namespace todo
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.Write(Id);
             Console.ResetColor();
-            Console.Write(" {0} ", Title);
+            Console.Write(" {0} ", DecodeTitle(Title));
             Console.ForegroundColor = ConsoleColor.DarkRed;
             if (Completed) Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(Completed);

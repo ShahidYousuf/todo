@@ -21,8 +21,7 @@ namespace todo
             {
                 case Command.LIST:
                     optionValues.TryGetValue(CommandOption.OUTPUT, out string? option);
-                    result = controller.ListTodos(option);
-                    Console.WriteLine(result);
+                    controller.ListTodos(option);
                     break;
                 case Command.GET:
 

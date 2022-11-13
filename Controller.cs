@@ -9,11 +9,21 @@ namespace todo
             store = _store;
         }
 
-        public string ListTodos(string? output)
+        public void ListTodos(string? output)
         {
-            if (output == "completed") return "Listing todos -- completed";
-            if (output == "pending") return "Listing todos -- pending";
-            return "Listing todos -- all";
+            List<Todo> todos = store.GetTodos();
+            if (output == "completed")
+            {
+                todos = todos.FindAll(match: item => item.Completed);
+            }
+            if (output == "pending")
+            {
+                todos = todos.FindAll(match: item => !item.Completed);
+            }
+            foreach (var todo in todos)
+            {
+                todo.Print();
+            }
         }
 
         public string GetTodo(int id)

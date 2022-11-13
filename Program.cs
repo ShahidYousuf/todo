@@ -14,9 +14,7 @@ class Application
         Controller controller = new Controller(store);
         Router router = new Router(commandParser, controller);
         router.Route();
-        Todo todo = new Todo("First todo created");
-        todo.Id = 10;
-        todo.Print();
+       
     }
 
 }

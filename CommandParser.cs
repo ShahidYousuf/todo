@@ -153,17 +153,17 @@ namespace todo
                         }
                         else
                         {
-                            command = Command.HELP;
                             optionValues.Clear();
+                            command = Command.HELP;
                             optionValues.Add(CommandOption.COMMAND, "list");
+
                         }
 
                     }
                     else
                     {
                         optionValues.Clear();
-                        command = Command.HELP;
-                        optionValues.Add(CommandOption.COMMAND, "list");
+                        command = Command.LIST;
                     }
                     commandWithOptions.Command = command;
                     commandWithOptions.OptionValues = optionValues;
