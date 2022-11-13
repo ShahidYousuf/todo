@@ -138,14 +138,13 @@ namespace todo
             switch (command)
             {
                 case Command.LIST:
-                    string value = "";
                     if (optionValues.Count > 1)
                     {
                         optionValues.Clear();
                         command = Command.HELP;
                         optionValues.Add(CommandOption.COMMAND, "list");
                     }
-                    if (optionValues.TryGetValue(CommandOption.OUTPUT, out value))
+                    if (optionValues.TryGetValue(CommandOption.OUTPUT, out string? value))
                     {
                         if (value == "completed" || value == "pending")
                         {
@@ -170,14 +169,13 @@ namespace todo
                     commandWithOptions.OptionValues = optionValues;
                     return commandWithOptions;
                 case Command.GET:
-                    string gvalue = "";
                     if (optionValues.Count > 1)
                     {
                         optionValues.Clear();
                         command = Command.HELP;
                         optionValues.Add(CommandOption.COMMAND, "get");
                     }
-                    if (optionValues.TryGetValue(CommandOption.INDEX, out gvalue))
+                    if (optionValues.TryGetValue(CommandOption.INDEX, out string? gvalue))
                     {
                         var isNumeric = int.TryParse(gvalue, out _);
                         if (isNumeric)
@@ -203,14 +201,13 @@ namespace todo
                     return commandWithOptions;
 
                 case Command.CREATE:
-                    string cvalue = "";
                     if (optionValues.Count > 1)
                     {
                         optionValues.Clear();
                         command = Command.HELP;
                         optionValues.Add(CommandOption.COMMAND, "create");
                     }
-                    if (optionValues.TryGetValue(CommandOption.TITLE, out cvalue))
+                    if (optionValues.TryGetValue(CommandOption.TITLE, out string? cvalue))
                     {
                         optionValues.Clear();
                         optionValues.Add(CommandOption.TITLE, cvalue);
@@ -226,15 +223,13 @@ namespace todo
                     return commandWithOptions;
 
                 case Command.EDIT:
-                    string eivalue = "";
-                    string etvalue = "";
                     if (optionValues.Count != 2)
                     {
                         optionValues.Clear();
                         command = Command.HELP;
                         optionValues.Add(CommandOption.COMMAND, "edit");
                     }
-                    if (optionValues.TryGetValue(CommandOption.INDEX, out eivalue))
+                    if (optionValues.TryGetValue(CommandOption.INDEX, out string? eivalue))
                     {
                         var isNumeric = int.TryParse(eivalue, out _);
                         if (isNumeric)
@@ -255,7 +250,7 @@ namespace todo
                         optionValues.Add(CommandOption.COMMAND, "edit");
 
                     }
-                    if (optionValues.TryGetValue(CommandOption.TITLE, out etvalue))
+                    if (optionValues.TryGetValue(CommandOption.TITLE, out string? etvalue))
                     {
                         optionValues[CommandOption.TITLE] = etvalue;
                     }
@@ -270,14 +265,13 @@ namespace todo
                     return commandWithOptions;
 
                 case Command.REMOVE:
-                    string rvalue = "";
                     if (optionValues.Count > 1)
                     {
                         optionValues.Clear();
                         command = Command.HELP;
                         optionValues.Add(CommandOption.COMMAND, "remove");
                     }
-                    if (optionValues.TryGetValue(CommandOption.INDEX, out rvalue))
+                    if (optionValues.TryGetValue(CommandOption.INDEX, out string? rvalue))
                     {
                         var isNumeric = int.TryParse(rvalue, out _);
                         if (isNumeric)
@@ -303,14 +297,13 @@ namespace todo
                     return commandWithOptions;
 
                 case Command.CHECK:
-                    string chvalue = "";
                     if (optionValues.Count > 1)
                     {
                         optionValues.Clear();
                         command = Command.HELP;
                         optionValues.Add(CommandOption.COMMAND, "check");
                     }
-                    if (optionValues.TryGetValue(CommandOption.INDEX, out chvalue))
+                    if (optionValues.TryGetValue(CommandOption.INDEX, out string? chvalue))
                     {
                         var isNumeric = int.TryParse(chvalue, out _);
                         if (isNumeric)
@@ -336,14 +329,13 @@ namespace todo
                     return commandWithOptions;
 
                 case Command.UNCHECK:
-                    string ucvalue = "";
                     if (optionValues.Count > 1)
                     {
                         optionValues.Clear();
                         command = Command.HELP;
                         optionValues.Add(CommandOption.COMMAND, "uncheck");
                     }
-                    if (optionValues.TryGetValue(CommandOption.INDEX, out ucvalue))
+                    if (optionValues.TryGetValue(CommandOption.INDEX, out string? ucvalue))
                     {
                         var isNumeric = int.TryParse(ucvalue, out _);
                         if (isNumeric)
@@ -369,13 +361,12 @@ namespace todo
                     return commandWithOptions;
 
                 case Command.HELP:
-                    string hv = "";
                     if (optionValues.Count > 1)
                     {
                         optionValues.Clear();
                         command = Command.HELP;
                     }
-                    if (optionValues.TryGetValue(CommandOption.COMMAND, out hv))
+                    if (optionValues.TryGetValue(CommandOption.COMMAND, out string? hv))
                     {
                         optionValues.Clear();
                         command = Command.HELP;

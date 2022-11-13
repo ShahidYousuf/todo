@@ -3,11 +3,14 @@ namespace todo
 {
     public class Todo
     {
+        
         public Todo(string title)
         {
             Title = title;
             Completed = false;
         }
+
+        public string TitleSeparator { get; } = "^^^";
 
         public string Title { get; set; }
 
@@ -17,7 +20,8 @@ namespace todo
 
         public override string ToString()
         {
-            return String.Format("{0} {1} {2}", Id, Title, Completed);
+            string title = Title.Replace(" ", TitleSeparator);
+            return String.Format("{0} {1} {2}", Id, title, Completed);
         }
 
         public void Print()

@@ -3,12 +3,13 @@ namespace todo
 {
     public class Controller
     {
-        public Controller()
+        private Store store;
+        public Controller(Store _store)
         {
-   
+            store = _store;
         }
 
-        public string ListTodos(string output)
+        public string ListTodos(string? output)
         {
             if (output == "completed") return "Listing todos -- completed";
             if (output == "pending") return "Listing todos -- pending";
@@ -20,12 +21,18 @@ namespace todo
             return "Getting Todo with id " + id.ToString();
         }
 
-        public string CreateTodo(string title)
+        public string CreateTodo(string? title)
         {
-            return "Creating Todo with title {title}";
+            string result = "Todo not created, please try again!";
+            if (title is not null) {
+                Todo todo = new Todo(title);
+                store.WriteTodo(todo);
+                result = "Todo created successfully!";
+            }
+            return result;
         }
 
-        public string EditTodo(int id, string newTitle)
+        public string EditTodo(int id, string? newTitle)
         {
             return "Editing Todo with id " + id.ToString() + " new title " + newTitle;
         }
@@ -50,7 +57,7 @@ namespace todo
             return "General Help Menu";
         }
 
-        public string HelpCommand(string command)
+        public string HelpCommand(string? command)
         {
             if (command == null || command.Trim().Length == 0) return Help();
             return "Help for " + command;

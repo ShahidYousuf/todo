@@ -10,7 +10,8 @@ class Application
         //Persistence persistence = Persistence.FILE;
         //Console.WriteLine("The persistence is of type {0}", persistence);
         CommandParser commandParser = new CommandParser();
-        Controller controller = new Controller();
+        Store store = new Store();
+        Controller controller = new Controller(store);
         Router router = new Router(commandParser, controller);
         router.Route();
         Todo todo = new Todo("First todo created");
