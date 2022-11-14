@@ -60,9 +60,10 @@ namespace todo
             return "Deleting Todo with id " + id.ToString();
         }
 
-        public string CheckTodo(int id)
+        public void CheckTodo(int id)
         {
-            return "Setting the Todo with id " + id.ToString() + " completed";
+            store.SetTodoChecked(id);
+            Console.WriteLine("Todo with id {0} set to completed.", id);
         }
 
         public string UncheckTodo(int id)

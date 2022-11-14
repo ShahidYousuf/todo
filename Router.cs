@@ -61,8 +61,7 @@ namespace todo
                     if (cindex is not null)
                     {
                         int cid = int.Parse(cindex);
-                        result = controller.CheckTodo(cid);
-                        Console.WriteLine(result);
+                        controller.CheckTodo(cid);
                     }
                     break;
                 case Command.UNCHECK:
