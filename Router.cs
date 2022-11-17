@@ -69,8 +69,7 @@ namespace todo
                     if (ucindex is not null)
                     {
                         int ucid = int.Parse(ucindex);
-                        result = controller.UncheckTodo(ucid);
-                        Console.WriteLine(result);
+                        controller.UncheckTodo(ucid);
                     }
                     break;
                 case Command.HELP:

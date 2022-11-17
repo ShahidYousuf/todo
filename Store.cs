@@ -168,6 +168,42 @@ namespace todo
             Refresh_DB(todos);
         }
 
+        public void SetTodoUnChecked(int id)
+        {
+            FileStream db_file_stream = File.Open(DBPath, FileMode.Open, FileAccess.Read);
+            StreamReader reader = new StreamReader(db_file_stream);
+            List<Todo> todos = new List<Todo>();
+            while (!reader.EndOfStream)
+            {
+                string? data = reader.ReadLine();
+                if (data is null)
+                {
+                    break;
+                }
+                string[] parts = data.Split(" ");
+                if (parts.Length < 3)
+                {
+                    continue;
+                }
+                Todo todo = new Todo(parts[1]);
+                int.TryParse(parts[0], out int index);
+                todo.Id = index;
+                if (index == id)
+                {
+                    todo.Completed = false;
+                }
+                else
+                {
+                    bool.TryParse(parts[2], out bool completed);
+                    todo.Completed = completed;
+                }
+                todos.Add(todo);
+            }
+            reader.Close();
+            db_file_stream.Close();
+            Refresh_DB(todos);
+        }
+
         public void Refresh_DB(List<Todo> todos)
         {
             todos = todos.OrderBy(t => t.Id).ToList();

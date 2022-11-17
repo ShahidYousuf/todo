@@ -63,12 +63,13 @@ namespace todo
         public void CheckTodo(int id)
         {
             store.SetTodoChecked(id);
-            Console.WriteLine("Todo with id {0} set to completed.", id);
+            Console.WriteLine("Todo with id {0} marked completed.", id);
         }
 
-        public string UncheckTodo(int id)
+        public void UncheckTodo(int id)
         {
-            return "Setting the Todo with id " + id.ToString() + " pending";
+            store.SetTodoUnChecked(id);
+            Console.WriteLine("Todo with id {0} marked pending.", id);
         }
 
         public string Help()
