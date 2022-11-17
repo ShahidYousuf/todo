@@ -52,8 +52,7 @@ namespace todo
                     if (dindex is not null)
                     {
                         int did = int.Parse(dindex);
-                        result = controller.DeleteTodo(did);
-                        Console.WriteLine(result);
+                        controller.DeleteTodo(did);
                     }
                     break;
                 case Command.CHECK:
