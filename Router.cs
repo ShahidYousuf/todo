@@ -43,8 +43,7 @@ namespace todo
                     {
                         int eid = int.Parse(eindex);
                         optionValues.TryGetValue(CommandOption.TITLE, out string? etitle);
-                        result = controller.EditTodo(eid, etitle);
-                        Console.WriteLine(result);
+                        controller.EditTodo(eid, etitle);
                     }
                     break;
                 case Command.REMOVE:

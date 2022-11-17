@@ -50,9 +50,13 @@ namespace todo
             return result;
         }
 
-        public string EditTodo(int id, string? newTitle)
+        public void EditTodo(int id, string? newTitle)
         {
-            return "Editing Todo with id " + id.ToString() + " new title " + newTitle;
+            if (newTitle is not null)
+            {
+                store.EditTodo(id, newTitle);
+                Console.WriteLine("Todo with id {0} edited successfully.", id);
+            }
         }
 
         public void DeleteTodo(int id)
