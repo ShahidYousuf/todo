@@ -122,7 +122,150 @@ namespace todo
             }
         }
 
-     
+        public void HelpList()
+        {
+            Console.WriteLine("Showing help for command `list`");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Description:");
+            Console.ResetColor();
+            Console.WriteLine("lists all todos, or todos specified by output option -o/--output as completed or pending");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Syntax");
+            Console.ResetColor();
+            Console.WriteLine("todo list [-o | --output] [completed | pending]");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Examples");
+            Console.ResetColor();
+            Console.WriteLine("todo list\t - list all todos.");
+            Console.WriteLine("todo list -o completed\t - list all completed todos");
+            Console.WriteLine("todo list -o pending\t - list all pending todos");
+        }
+
+        public void HelpGet()
+        {
+            Console.WriteLine("Showing help for command `get`");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Description:");
+            Console.ResetColor();
+            Console.WriteLine("gets a todo specified by index.");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Syntax");
+            Console.ResetColor();
+            Console.WriteLine("todo get [-i | --index] <index>");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Examples");
+            Console.ResetColor();
+            Console.WriteLine("todo get -i 5\t - gets a todo with index 5");
+            Console.WriteLine("todo get --index 5\t - gets a todo with index 5");
+        }
+
+        public void HelpCreate()
+        {
+            Console.WriteLine("Showing help for command `create`");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Description:");
+            Console.ResetColor();
+            Console.WriteLine("creates a new todo with title specified by -t or --title option.");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Syntax");
+            Console.ResetColor();
+            Console.WriteLine("todo create [-t | --title] <title>");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Examples");
+            Console.ResetColor();
+            Console.WriteLine("todo create -t 'a sample title'\t - creates a new todo with the given title.");
+            Console.WriteLine("todo create --title 'a sample title'\t - creates a new todo with the given title.");
+        }
+
+        public void HelpEdit()
+        {
+            Console.WriteLine("Showing help for command `edit`");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Description:");
+            Console.ResetColor();
+            Console.WriteLine("edits a todo title specified by index provinding new title using title option.");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Syntax");
+            Console.ResetColor();
+            Console.WriteLine("todo edit [-i | --index] <index> [-t | --title] <title>");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Examples");
+            Console.ResetColor();
+            Console.WriteLine("todo edit -i 5 -t 'new sample title'\t - edits a todo with index 5, and sets its new title.");
+            Console.WriteLine("todo edit --index 5 --title 'new sample title'\t - edits a todo with index 5, and sets its new title");
+        }
+
+        public void HelpRemove()
+        {
+            Console.WriteLine("Showing help for command `remove`");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Description:");
+            Console.ResetColor();
+            Console.WriteLine("removes a todo from the todo listing specified by index.");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Syntax");
+            Console.ResetColor();
+            Console.WriteLine("todo remove [-i | --index] <index>");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Examples");
+            Console.ResetColor();
+            Console.WriteLine("todo remove -i 5\t - removes a todo with index 5");
+            Console.WriteLine("todo remove --index 5\t - removes a todo with index 5");
+        }
+
+        public void HelpCheck()
+        {
+            Console.WriteLine("Showing help for command `check`");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Description:");
+            Console.ResetColor();
+            Console.WriteLine("sets a todo specified by index as checked or completed.");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Syntax");
+            Console.ResetColor();
+            Console.WriteLine("todo check [-i | --index] <index>");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Examples");
+            Console.ResetColor();
+            Console.WriteLine("todo check -i 5\t - sets a todo with index 5 as checked or completed");
+            Console.WriteLine("todo check --index 5\t - sets a todo with index 5 as checked or completed");
+        }
+
+        public void HelpUnCheck()
+        {
+            Console.WriteLine("Showing help for command `uncheck`");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Description:");
+            Console.ResetColor();
+            Console.WriteLine("sets a todo specified by index as unchecked or pending.");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Syntax");
+            Console.ResetColor();
+            Console.WriteLine("todo uncheck [-i | --index] <index>");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Examples");
+            Console.ResetColor();
+            Console.WriteLine("todo uncheck -i 5\t - sets a todo with index 5 as unchecked or pending");
+            Console.WriteLine("todo uncheck --index 5\t - sets a todo with index 5 as unchecked or pending");
+        }
+
+        public void HelpHelp()
+        {
+            Console.WriteLine("Showing help for command `help`");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Description:");
+            Console.ResetColor();
+            Console.WriteLine("displays detailed help and examples for a command specified.");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Syntax");
+            Console.ResetColor();
+            Console.WriteLine("todo help [-c | --command] <command>");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Examples");
+            Console.ResetColor();
+            Console.WriteLine("todo help -c list\t - displays help for command `list`");
+            Console.WriteLine("todo help -c create\t - displays help for command `create`");
+        }
     }
 }
 
