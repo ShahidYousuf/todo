@@ -77,16 +77,52 @@ namespace todo
             Console.WriteLine("Todo with id {0} marked pending.", id);
         }
 
-        public string Help()
+        public void Help()
         {
-            return "General Help Menu";
+            Console.WriteLine("todo, version 1.0 2022. Developed by Shahid Yousuf.");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Github: https://github.com/ShahidYousuf/todo");
+            Console.ResetColor();
+            Console.WriteLine("todo <command> [-option] [value]");
+            Console.WriteLine("List of commands:");
+            Dictionary<string, string> commands_help = new Dictionary<string, string>()
+            {
+                { "list", "- list all todos, accepts -o options to filter completed or pending todos"},
+                { "get", "- get a todo given its index specified by -i option"},
+                { "create", "- create a new todo providing its title specified by -t option"},
+                { "edit", "- edit a todo title, specified by index -i and new title specified by -t option"},
+                { "remove", "- remove a todo given its index specified by -i option"},
+                { "check", "- mark a todo complete/checked given its index specified by -i option"},
+                { "uncheck", "- mark a todo pending/unchecked given its index specified by -i option"},
+                { "help", "- shows this help menu, or help for the above commands specified by -c option"},
+            };
+            foreach (var (key, value) in commands_help)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.Write("\n{0} ", key);
+                Console.ResetColor();
+                Console.Write("{0}", value);
+            }
+            Console.WriteLine();
+            Console.WriteLine("For more information about a command, type:");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("todo help -c <command>\n");
+            Console.ResetColor();
         }
 
-        public string HelpCommand(string? command)
+        public void HelpCommand(string? command)
         {
-            if (command == null || command.Trim().Length == 0) return Help();
-            return "Help for " + command;
+            if (command == null || command.Trim().Length == 0)
+            {
+                Help();
+            }
+            else
+            {
+                Console.WriteLine("Help for {0}", command);
+            }
         }
+
+     
     }
 }
 

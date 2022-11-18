@@ -72,12 +72,10 @@ namespace todo
                     break;
                 case Command.HELP:
                     optionValues.TryGetValue(CommandOption.COMMAND, out string? comd);
-                    result = controller.HelpCommand(comd);
-                    Console.WriteLine(result);
+                    controller.HelpCommand(comd);
                     break;
                 default:
-                    result = controller.Help();
-                    Console.WriteLine(result);
+                    controller.Help();
                     break;
             }
         }
