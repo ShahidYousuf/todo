@@ -112,14 +112,37 @@ namespace todo
 
         public void HelpCommand(string? command)
         {
-            if (command == null || command.Trim().Length == 0)
+            switch (command)
             {
-                Help();
+                case "list":
+                    HelpList();
+                    break;
+                case "get":
+                    HelpGet();
+                    break;
+                case "create":
+                    HelpCreate();
+                    break;
+                case "edit":
+                    HelpEdit();
+                    break;
+                case "remove":
+                    HelpRemove();
+                    break;
+                case "check":
+                    HelpCheck();
+                    break;
+                case "uncheck":
+                    HelpUnCheck();
+                    break;
+                case "help":
+                    HelpHelp();
+                    break;
+                default:
+                    Help();
+                    break;
             }
-            else
-            {
-                Console.WriteLine("Help for {0}", command);
-            }
+      
         }
 
         public void HelpList()

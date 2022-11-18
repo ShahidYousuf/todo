@@ -370,7 +370,7 @@ namespace todo
                     {
                         optionValues.Clear();
                         command = Command.HELP;
-                        if (hv == "list" || hv == "get" || hv == "edit" || hv == "create" || hv == "remove" || hv == "check" || hv == "uncheck" )
+                        if (hv == "list" || hv == "get" || hv == "edit" || hv == "create" || hv == "remove" || hv == "check" || hv == "uncheck" || hv == "help" )
                         {
                             optionValues.Add(CommandOption.COMMAND, hv);
                         }
