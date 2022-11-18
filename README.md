@@ -1,5 +1,9 @@
 # todo
-A console based todo application written in C# and .NET 7 with file persistence.
+A console based todo application :pushpin: written in C# 11 and .NET 7 with file persistence.
+
+Sample help response
+
+![Sample todo help output](https://github.com/ShahidYousuf/todo/blob/master/todo_ss.png)
 
 ##### Display information and general help
 ```bash
